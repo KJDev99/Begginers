@@ -73,7 +73,36 @@ src/
 - 95 ta grammatika mavzusi (88 ta yangi + eski ro‘yxatdan 7 ta B1/B2)
 
 Yakuniy grammatika ro‘yxati `src/lib/grammar.ts` da asl loyihadagi tartibda
-birlashtiriladi. Asl `index.html` solishtirish uchun loyihada qoldirilgan.
+birlashtiriladi. (Asl `index.html` fayli keyinchalik repozitoriydan o‘chirilgan —
+uning butun mazmuni `src/data/` ichida saqlanib qolgan.)
+
+## SEO
+
+Barcha sahifalarda to‘liq meta ma’lumotlar bor: `title`, `description`,
+`keywords`, canonical havola, Open Graph va Twitter kartalari.
+
+- **Statik HTML** — 95 ta grammatika mavzusi ham build paytida oldindan
+  tayyorlanadi (`generateStaticParams`), ya’ni qidiruv robotlari kontentni
+  darhol ko‘radi.
+- **Structured data (JSON-LD)** — `WebSite`, `EducationalOrganization`,
+  `Course`, `LearningResource`, `Quiz` va `BreadcrumbList`.
+- **`/sitemap.xml`** — 101 ta manzil; **`/robots.txt`**;
+  **`/manifest.webmanifest`**.
+- Shaxsiy sahifalar (`/add-content`, `/progress`) `noindex` qilingan.
+- Ikonkalar va Open Graph rasmi: `src/app/icon.png`, `src/app/apple-icon.png`,
+  `public/og.png`.
+
+### Domenni sozlash (muhim)
+
+Canonical havolalar, sitemap va OG rasm manzillari sayt domenidan yasaladi.
+Vercelda u avtomatik aniqlanadi. O‘z domeningiz bo‘lsa, uni ko‘rsating:
+
+```bash
+# .env.local  (yoki Vercel -> Settings -> Environment Variables)
+NEXT_PUBLIC_SITE_URL=https://sizning-domeningiz.uz
+```
+
+Namuna `.env.example` faylida.
 
 ## Foydalanuvchi ma’lumotlari
 
