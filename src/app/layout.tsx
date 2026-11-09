@@ -66,7 +66,13 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     images: [
-      { url: "/og.png", width: 1200, height: 630, alt: SITE_TITLE },
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: SITE_TITLE,
+      },
     ],
   },
 

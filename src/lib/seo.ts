@@ -11,16 +11,19 @@ import type { Metadata } from "next";
    ============================================================ */
 
 /**
- * Saytning asosiy manzili.
- * 1) `NEXT_PUBLIC_SITE_URL` — o'z domeningiz (eng ustun turadi);
- * 2) Vercel avtomatik beradigan production domeni;
- * 3) lokal ishlab chiqish manzili.
+ * Saytning rasmiy (canonical) manzili.
+ *
+ * Bu MANZIL BITTA bo'lishi shart: sayt bir nechta domenda ochilsa ham
+ * (masalan `begginers.vercel.app`), canonical havola doim asosiy domenga
+ * ishora qilishi kerak — aks holda Google qaysi birini indekslashni
+ * bilmaydi va sotib olingan domen qidiruvda chiqmaydi.
+ *
+ * `NEXT_PUBLIC_SITE_URL` orqali boshqa domen ko'rsatish mumkin.
  */
+export const PRODUCTION_URL = "https://www.hangugo.uz";
+
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000")
+  process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_URL
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "HANGUK";
@@ -170,6 +173,7 @@ export function buildMetadata({
           url: "/og.png",
           width: 1200,
           height: 630,
+          type: "image/png",
           alt: SITE_TITLE,
         },
       ],
