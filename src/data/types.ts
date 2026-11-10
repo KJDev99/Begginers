@@ -32,6 +32,8 @@ export type VocabWord = {
   g: string;
   /** Daraja: A1 | A2 | B1 | B2 */
   l: string;
+  /** Rasm (emoji) — `vocab-emoji.ts` dan */
+  im: string;
 };
 
 /* ---------- Grammatika ---------- */
@@ -187,5 +189,7 @@ export type AppState = {
   theme: "light" | "dark";
   flashIdx: number;
   gnotes: Record<string, GrammarNote>;
+  /** Yozuv mashqida muvaffaqiyatli yozilgan belgi/so'zlar */
+  wrote: Record<string, boolean>;
   v3?: number;
 };

@@ -7,6 +7,7 @@ import {
   Languages,
   Library,
   Lock,
+  PenLine,
   RotateCcw,
   Star,
   Target,
@@ -84,6 +85,13 @@ export default function ProgressPage() {
       icon: Library,
       from: "from-pink",
       to: "to-green",
+    },
+    {
+      label: "Yozuv mashqi",
+      value: p.w,
+      icon: PenLine,
+      from: "from-green",
+      to: "to-cyan",
     },
   ];
 

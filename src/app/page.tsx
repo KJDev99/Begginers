@@ -42,10 +42,19 @@ const LESSONS = [
     no: "03 / VOCABULARY",
     symbol: "사랑",
     title: "Kundalik lug‘at",
-    text: "So‘zlar, flashcard va takrorlash.",
+    text: "So‘zlar rasmi bilan, flashcard va takrorlash.",
     href: "/vocabulary",
     glow: "var(--color-pink)",
     key: "v" as const,
+  },
+  {
+    no: "04 / WRITING",
+    symbol: "쓰기",
+    title: "Yozuv mashqi",
+    text: "Belgini yozing — qanday yozilishi ko‘rsatiladi.",
+    href: "/writing",
+    glow: "var(--color-green)",
+    key: "w" as const,
   },
 ];
 

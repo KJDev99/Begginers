@@ -1,5 +1,6 @@
 // Lug'at ma'lumotlari — asl loyihadan o'zgartirilmagan holda ko'chirilgan.
 import type { VocabWord } from "./types";
+import { wordEmoji } from "./vocab-emoji";
 
 const RAW: string[][] = [
         ["안녕하세요", "Assalomu alaykum", "annyeonghaseyo", "Salomlashuv"],
@@ -162,6 +163,7 @@ export const VOCAB: VocabWord[] = RAW.map((v, i) => ({
   pr: v[2],
   g: v[3],
   l: v[4] || "A1",
+  im: wordEmoji(v[0], v[3]),
 }));
 
 /** Lug'atdagi barcha guruh nomlari (asl tartibda). */

@@ -3,6 +3,7 @@ import {
   Home,
   Languages,
   Library,
+  PenLine,
   PlusCircle,
   Target,
   Trophy,
@@ -38,6 +39,14 @@ export const NAV: NavItem[] = [
     kr: "한",
     icon: Languages,
     accent: "var(--color-cyan)",
+  },
+  {
+    href: "/writing",
+    label: "Yozuv",
+    title: "Yozuv mashqi",
+    kr: "書",
+    icon: PenLine,
+    accent: "var(--color-pink)",
   },
   {
     href: "/grammar",

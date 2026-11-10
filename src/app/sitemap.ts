@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/alphabet`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/writing`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/grammar`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/vocabulary`, changeFrequency: "weekly", priority: 0.9 },
     {

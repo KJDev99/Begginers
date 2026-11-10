@@ -7,6 +7,8 @@ import { ArrowLeft, Check, Eye, PartyPopper, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { AudioButton } from "@/components/ui/AudioButton";
+import { WordImage } from "@/components/ui/WordImage";
+import { WriteButton } from "@/components/WriteButton";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { SectionHead } from "@/components/ui/SectionHead";
@@ -193,6 +195,7 @@ export default function FlashcardPage() {
                     {current.kr}
                   </p>
                   <AudioButton text={current.kr} />
+                  <WriteButton text={current.kr} meaning={current.uz} />
                 </div>
 
                 {revealed ? (
@@ -202,6 +205,12 @@ export default function FlashcardPage() {
                     transition={{ duration: 0.2 }}
                     className="mt-6"
                   >
+                    <WordImage
+                      emoji={current.im}
+                      alt={current.uz}
+                      size="xl"
+                      className="mx-auto mb-4"
+                    />
                     <p className="text-xl font-bold">{current.uz}</p>
                     {current.pr && (
                       <p className="mt-1 text-sm text-cyan/80 italic">

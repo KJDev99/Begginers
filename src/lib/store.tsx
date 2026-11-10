@@ -11,6 +11,7 @@ import {
 } from "react";
 
 import { VOCAB } from "@/data/vocab";
+import { wordEmoji } from "@/data/vocab-emoji";
 import type {
   AppState,
   CustomQuiz,
@@ -41,6 +42,7 @@ export const DEFAULT_STATE: AppState = {
   theme: "light",
   flashIdx: 0,
   gnotes: {},
+  wrote: {},
 };
 
 function loadState(): AppState {
@@ -82,6 +84,8 @@ type Store = {
   markGrammarRead: (id: string) => boolean;
   setBox: (id: string, value: number) => void;
   toggleMemorized: (id: string) => boolean;
+  /** Yozuv mashqi: belgini yozildi deb belgilaydi. */
+  markWritten: (key: string) => boolean;
   addGrammarExample: (id: string, example: Example) => void;
   addGrammarException: (id: string, text: string) => void;
   addCustomGrammar: (g: CustomGrammar) => void;
@@ -207,6 +211,29 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     [state.box, update],
   );
 
+  /**
+   * Yozuv mashqida belgi to'g'ri yozilganda chaqiriladi.
+   * @returns birinchi marta yozildimi (XP shunda beriladi)
+   */
+  const markWritten = useCallback(
+    (key: string) => {
+      const first = !(state.wrote || {})[key];
+      update((d) => {
+        d.wrote = d.wrote || {};
+        if (d.wrote[key]) return;
+        d.wrote[key] = true;
+        d.xp += 3;
+        const t = today();
+        if (d.last !== t) {
+          d.streak = d.last === yesterday() ? d.streak + 1 : 1;
+          d.last = t;
+        }
+      });
+      return first;
+    },
+    [state.wrote, update],
+  );
+
   const addGrammarExample = useCallback(
     (id: string, example: Example) =>
       update((d) => {
@@ -258,7 +285,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const vocab = useMemo(
-    () => [...VOCAB, ...state.cVocab],
+    () => [
+      ...VOCAB,
+      // Foydalanuvchi qo'shgan so'zlarga guruhi bo'yicha rasm beriladi.
+      ...state.cVocab.map((v) => ({ ...v, im: wordEmoji(v.kr, v.g) })),
+    ],
     [state.cVocab],
   );
 
@@ -290,6 +321,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     markGrammarRead,
     setBox,
     toggleMemorized,
+    markWritten,
     addGrammarExample,
     addGrammarException,
     addCustomGrammar,

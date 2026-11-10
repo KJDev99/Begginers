@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { toast } from "sonner";
 
 import { AudioButton } from "@/components/ui/AudioButton";
+import { WriteButton } from "@/components/WriteButton";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { SectionHead } from "@/components/ui/SectionHead";
@@ -21,7 +22,7 @@ export default function AlphabetPage() {
     <div>
       <SectionHead
         title="Hangul alifbosi — 한글"
-        subtitle="Harfni bosib o‘rganilgan deb belgilang yoki tinglash tugmasi bilan talaffuzini eshiting."
+        subtitle="Harfni bosib o‘rganilgan deb belgilang, talaffuzini tinglang yoki ✎ tugmasi bilan yozib mashq qiling."
       />
 
       {/* ---------- Umumiy rivojlanish ---------- */}
@@ -126,12 +127,19 @@ export default function AlphabetPage() {
                         </span>
                         <span className="text-[10px] text-muted">{kind}</span>
 
-                        <AudioButton
-                          text={letterSpeech(letter)}
-                          size="sm"
-                          label={`${letter.ch} talaffuzini tinglash`}
-                          className="absolute bottom-2.5 left-1/2 -translate-x-1/2 opacity-60 transition-opacity duration-150 group-hover:opacity-100"
-                        />
+                        <span className="absolute bottom-2.5 left-1/2 flex -translate-x-1/2 items-center gap-1.5 opacity-70 transition-opacity duration-150 group-hover:opacity-100">
+                          <AudioButton
+                            text={letterSpeech(letter)}
+                            size="sm"
+                            label={`${letter.ch} talaffuzini tinglash`}
+                          />
+                          <WriteButton
+                            text={letter.ch}
+                            meaning={letter.s}
+                            size="sm"
+                            label="Yozib mashq qilish"
+                          />
+                        </span>
                       </div>
                     </StaggerItem>
                   );

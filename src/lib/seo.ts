@@ -82,6 +82,15 @@ export const PAGE_KEYWORDS = {
     "한글 자음 모음",
     "hangul alifbosini o‘rganish",
   ],
+  writing: [
+    "koreyscha yozish",
+    "hangul yozish",
+    "koreys harflarini yozish",
+    "koreys tilida yozishni o‘rganish",
+    "hangul yozuv tartibi",
+    "koreyscha yozuv mashqi",
+    "한글 쓰기",
+  ],
   grammar: [
     "koreys tili grammatikasi",
     "koreys grammatikasi",
